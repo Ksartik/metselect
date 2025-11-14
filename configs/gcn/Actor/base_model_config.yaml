@@ -1,0 +1,47 @@
+method: magnet
+transductive: False
+
+model_name: gcn #mlp, sage, gat, appnp
+num_layers: 2
+hidden_dims: [64, 64]
+decoder: lin
+dropout_p: 0
+
+base_model_params:
+  [
+    {K: 5, alpha: 0.2, add_self_loops: False},
+    {K: 10, alpha: 0.2, add_self_loops: False},
+  ]
+
+to_protoaug: False
+
+to_magnet: False
+multiView_magnet: True
+variance_type: layer
+clustered_magnet: False
+class_weighted: False
+protos_type: mean
+
+# magnet parameters
+magnet_alpha: 1.0
+neg_lambda: 1.0
+batch_hard_thresh: 100
+k_nearest: -1
+n_impostors: -1
+warmup: 0
+lambda_ce: 0.0
+split_loss: False
+only_closest_layer: True
+dist_metric: l2
+
+coupled_cluster: True
+batched_cluster: False
+agglo_cluster: False
+min_mu_dist: [0.00000001, 0.00000001, 0.00000001]
+
+cluster_params:
+  {
+    algorithm: minibatch-kmeans,
+    num_clusters: 5,
+    num_iters: 100,
+  }

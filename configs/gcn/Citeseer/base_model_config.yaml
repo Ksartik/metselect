@@ -1,0 +1,18 @@
+method: magnet
+transductive: False
+
+model_name: gcn #mlp, sage, gat, appnp
+num_layers: 2
+hidden_dims: [64, 64]
+decoder: lin
+dropout_p: 0
+
+base_model_params:
+  [
+    {K: 5, alpha: 0.2, add_self_loops: False},
+    {K: 10, alpha: 0.2, add_self_loops: False},
+  ]
+
+to_protoaug: False
+
+to_magnet: False
